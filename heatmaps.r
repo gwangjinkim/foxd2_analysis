@@ -1,16 +1,4 @@
 
-
-mkdir -p ~/Downloads/DEanalysis
-rsync -rav -e "ssh -p 64168" josephus@132.230.165.168:/media/josephus/Elements/DEanalysis/foxd2-F7-mk4-201907 ~/Downloads/DEanalysis
-rsync -rav -e "ssh -p 64168" josephus@132.230.165.168:/media/josephus/Elements/DEanalysis/foxd2-C3-mk3-201907 ~/Downloads/DEanalysis
-
-rsync -rav -e "ssh -p 64168" josephus@132.230.165.168:/media/josephus/Elements/DEanalysis/foxd2-foxd2-F7-201907 ~/Downloads/DEanalysis
-
-
-
-
-
-
 conda create --name xlsxgrep
 source activate xlsxgrep
 conda install -c conda-forge python
@@ -26,12 +14,6 @@ for f in foxd2*;
 done
 
 # hit!
-
-rsync -rav -e "ssh -p 64168" josephus@132.230.165.168:/media/josephus/Elements/DEanalysis/foxd2-C3-F7-201907 ~/Downloads/DEanalysis
-
-
-
-
 
 
 
@@ -766,75 +748,77 @@ plot_go_term_heatmap_with_numbers("Wnt signaling pathway", right_counts_df, out_
 # with biomaRt
 ##################################
 
-> genes
-$`GO:0060993`
- [1] "Vangl2"   "Wwtr1"    "Nphp3"    "Gcnt4"    "Wnt9b"    "Gcnt3"   
- [7] "Wnt4"     "Agtr2"    "Zmpste24" "Prkx"     "Hnf1b"    "Sox4"    
-[13] "Gcnt1"   
-
-$`GO:0001656`
- [1] "Six2"   "Fbn1"   "Bmp7"   "Gdf11"  "Itga8"  "Bcl2"   "Greb1l" "Slit2" 
- [9] "Osr1"   "Nkx3-1" "Ctsh"   "Wnt4"   "Irx1"   "Foxc2"  "Irx2"   "Gli3"  
-[17] "Eya1"   "Bmp4"   "Irx3"   "Spry1"  "Pax8"   "Id2"    "Rdh10"  "Aph1a" 
-[25] "Fgf10"  "Aph1c"  "Id3"    "Sox17"  "Lhx1"   "Osr2"   "Fgf8"   "Shh"   
-[33] "Gdnf"   "Nf1"    "Hoxa11" "Hoxc11"
-
-$`GO:0016055`
-  [1] "Tmem88"        "Lgr4"          "Strn"          "Csnk1g1"      
-  [5] "Cdc73"         "Rnf43"         "Wif1"          "Gm28635"      
-  [9] "Lzts2"         "Csnk1g3"       "Nkd2"          "Daam2"        
- [13] "Axin1"         "Pkd2"          "Csnk1g2"       "Mark1"        
- [17] "Klhl12"        "Apcdd1"        "Wnt10b"        "Ccne1"        
- [21] "Lgr6"          "Axin2"         "Notum"         "Rspo4"        
- [25] "Sost"          "Gsk3b"         "Lmbr1l"        "Slc9a3r1"     
- [29] "Csnk1d"        "Apc"           "Gid8"          "Ldb1"         
- [33] "Fzd10"         "Tspan12"       "Dact1"         "Brd7"         
- [37] "Fzd3"          "Wnt1"          "Vrk3"          "Cul3"         
- [41] "Csnk2a2"       "Nkd1"          "Arl6"          "Rtf1"         
- [45] "Wnt8b"         "Fzd6"          "Nphp3"         "Mesd"         
- [49] "Cpz"           "Grk5"          "Tmem131l"      "Daam1"        
- [53] "Kremen1"       "Csnk1e"        "Csnk2a1"       "Znrf3"        
- [57] "Wnt9b"         "Wnt3"          "Cxxc4"         "Sostdc1"      
- [61] "Csnk1a1"       "Ctnnd1"        "Cyld"          "Ptk7"         
- [65] "Tax1bp3"       "Pias4"         "Ror1"          "Fzd7"         
- [69] "Bcl9"          "Porcn"         "Frat2"         "Celsr2"       
- [73] "Xiap"          "Lrp5"          "Fermt2"        "Tle3"         
- [77] "Ndrg2"         "Gsk3a"         "Amer2"         "Wnt4"         
- [81] "Wnt8a"         "Myc"           "Reck"          "Wnt16"        
- [85] "Zbtb33"        "Zranb1"        "Amer1"         "Fam53b"       
- [89] "Prkaa1"        "Wnt3a"         "Wnt9a"         "Drd2"         
- [93] "Lrp6"          "Ccnd1"         "Vrk2"          "Tnks2"        
- [97] "Pygo1"         "Ubac2"         "Sfrp4"         "Prkaa2"       
-[101] "Ctnnbip1"      "Otulin"        "Tnks"          "Fzd5"         
-[105] "Rnf138"        "Tcf7l1"        "Chd8"          "Ccar2"        
-[109] "Dkk4"          "Sfrp5"         "Fzd1"          "Hhex"         
-[113] "Spin1"         "Cdk14"         "Krt6a"         "Dvl3"         
-[117] "Wnt7b"         "Nxn"           "Sfrp1"         "Mitf"         
-[121] "Tle4"          "Ddx3x"         "Tle1"          "Ryk"          
-[125] "Amotl1"        "Usp34"         "Wls"           "Ddb1"         
-[129] "Tgfb1i1"       "Tmem198"       "Amer3"         "Senp2"        
-[133] "Dixdc1"        "Wnt6"          "Wnt10a"        "Trabd2b"      
-[137] "Tcf7l2"        "Amfr"          "Shisa6"        "Kremen2"      
-[141] "Dact3"         "Wnt5a"         "Apc2"          "Sox17"        
-[145] "Ctnnb1"        "Cpe"           "Zbed3"         "Pitx2"        
-[149] "Nlk"           "Adgra2"        "Btrc"          "Ndp"          
-[153] "Amotl2"        "Wnt5b"         "Epm2a"         "Ddit3"        
-[157] "Etv2"          "Rnf146"        "Lef1"          "Wnt2"         
-[161] "Dkk1"          "Fbxw4"         "Frzb"          "Ror2"         
-[165] "Vrk1"          "Csnk2b"        "Ctr9"          "Fzd8"         
-[169] "Tle5"          "Ccny"          "Tle2"          "Rspo3"        
-[173] "Tcf7"          "Fzd4"          "Disc1"         "Dvl1"         
-[177] "Dvl2"          "Lrp4"          "Wnt2b"         "Rspo2"        
-[181] "Grk6"          "Draxin"        "Ccdc88c"       "Bcl7b"        
-[185] "Dkk2"          "Pkd1"          "Fzd2"          "Tnik"         
-[189] "Vax2"          "Fzd9"          "Wnt7a"         "Wwox"         
-[193] "Cela1"         "Calcoco1"      "Ccn4"          "Wnt11"        
-[197] "Paf1"          "Leo1"          "Wdr61"         "Dkk3"         
-[201] "Fbxw11"        "2210016L21Rik" "Sfrp2"  
-
-Well, only the Wnt-signalling contains more genes ...
-but the others fewer genes ... strange ...
-If finding better gene lists
+# # 
+# > genes
+# $`GO:0060993`
+#  [1] "Vangl2"   "Wwtr1"    "Nphp3"    "Gcnt4"    "Wnt9b"    "Gcnt3"   
+#  [7] "Wnt4"     "Agtr2"    "Zmpste24" "Prkx"     "Hnf1b"    "Sox4"    
+# [13] "Gcnt1"   
+# 
+# $`GO:0001656`
+#  [1] "Six2"   "Fbn1"   "Bmp7"   "Gdf11"  "Itga8"  "Bcl2"   "Greb1l" "Slit2" 
+#  [9] "Osr1"   "Nkx3-1" "Ctsh"   "Wnt4"   "Irx1"   "Foxc2"  "Irx2"   "Gli3"  
+# [17] "Eya1"   "Bmp4"   "Irx3"   "Spry1"  "Pax8"   "Id2"    "Rdh10"  "Aph1a" 
+# [25] "Fgf10"  "Aph1c"  "Id3"    "Sox17"  "Lhx1"   "Osr2"   "Fgf8"   "Shh"   
+# [33] "Gdnf"   "Nf1"    "Hoxa11" "Hoxc11"
+# 
+# $`GO:0016055`
+#   [1] "Tmem88"        "Lgr4"          "Strn"          "Csnk1g1"      
+#   [5] "Cdc73"         "Rnf43"         "Wif1"          "Gm28635"      
+#   [9] "Lzts2"         "Csnk1g3"       "Nkd2"          "Daam2"        
+#  [13] "Axin1"         "Pkd2"          "Csnk1g2"       "Mark1"        
+#  [17] "Klhl12"        "Apcdd1"        "Wnt10b"        "Ccne1"        
+#  [21] "Lgr6"          "Axin2"         "Notum"         "Rspo4"        
+#  [25] "Sost"          "Gsk3b"         "Lmbr1l"        "Slc9a3r1"     
+#  [29] "Csnk1d"        "Apc"           "Gid8"          "Ldb1"         
+#  [33] "Fzd10"         "Tspan12"       "Dact1"         "Brd7"         
+#  [37] "Fzd3"          "Wnt1"          "Vrk3"          "Cul3"         
+#  [41] "Csnk2a2"       "Nkd1"          "Arl6"          "Rtf1"         
+#  [45] "Wnt8b"         "Fzd6"          "Nphp3"         "Mesd"         
+#  [49] "Cpz"           "Grk5"          "Tmem131l"      "Daam1"        
+#  [53] "Kremen1"       "Csnk1e"        "Csnk2a1"       "Znrf3"        
+#  [57] "Wnt9b"         "Wnt3"          "Cxxc4"         "Sostdc1"      
+#  [61] "Csnk1a1"       "Ctnnd1"        "Cyld"          "Ptk7"         
+#  [65] "Tax1bp3"       "Pias4"         "Ror1"          "Fzd7"         
+#  [69] "Bcl9"          "Porcn"         "Frat2"         "Celsr2"       
+#  [73] "Xiap"          "Lrp5"          "Fermt2"        "Tle3"         
+#  [77] "Ndrg2"         "Gsk3a"         "Amer2"         "Wnt4"         
+#  [81] "Wnt8a"         "Myc"           "Reck"          "Wnt16"        
+#  [85] "Zbtb33"        "Zranb1"        "Amer1"         "Fam53b"       
+#  [89] "Prkaa1"        "Wnt3a"         "Wnt9a"         "Drd2"         
+#  [93] "Lrp6"          "Ccnd1"         "Vrk2"          "Tnks2"        
+#  [97] "Pygo1"         "Ubac2"         "Sfrp4"         "Prkaa2"       
+# [101] "Ctnnbip1"      "Otulin"        "Tnks"          "Fzd5"         
+# [105] "Rnf138"        "Tcf7l1"        "Chd8"          "Ccar2"        
+# [109] "Dkk4"          "Sfrp5"         "Fzd1"          "Hhex"         
+# [113] "Spin1"         "Cdk14"         "Krt6a"         "Dvl3"         
+# [117] "Wnt7b"         "Nxn"           "Sfrp1"         "Mitf"         
+# [121] "Tle4"          "Ddx3x"         "Tle1"          "Ryk"          
+# [125] "Amotl1"        "Usp34"         "Wls"           "Ddb1"         
+# [129] "Tgfb1i1"       "Tmem198"       "Amer3"         "Senp2"        
+# [133] "Dixdc1"        "Wnt6"          "Wnt10a"        "Trabd2b"      
+# [137] "Tcf7l2"        "Amfr"          "Shisa6"        "Kremen2"      
+# [141] "Dact3"         "Wnt5a"         "Apc2"          "Sox17"        
+# [145] "Ctnnb1"        "Cpe"           "Zbed3"         "Pitx2"        
+# [149] "Nlk"           "Adgra2"        "Btrc"          "Ndp"          
+# [153] "Amotl2"        "Wnt5b"         "Epm2a"         "Ddit3"        
+# [157] "Etv2"          "Rnf146"        "Lef1"          "Wnt2"         
+# [161] "Dkk1"          "Fbxw4"         "Frzb"          "Ror2"         
+# [165] "Vrk1"          "Csnk2b"        "Ctr9"          "Fzd8"         
+# [169] "Tle5"          "Ccny"          "Tle2"          "Rspo3"        
+# [173] "Tcf7"          "Fzd4"          "Disc1"         "Dvl1"         
+# [177] "Dvl2"          "Lrp4"          "Wnt2b"         "Rspo2"        
+# [181] "Grk6"          "Draxin"        "Ccdc88c"       "Bcl7b"        
+# [185] "Dkk2"          "Pkd1"          "Fzd2"          "Tnik"         
+# [189] "Vax2"          "Fzd9"          "Wnt7a"         "Wwox"         
+# [193] "Cela1"         "Calcoco1"      "Ccn4"          "Wnt11"        
+# [197] "Paf1"          "Leo1"          "Wdr61"         "Dkk3"         
+# [201] "Fbxw11"        "2210016L21Rik" "Sfrp2"  
+# 
+# Well, only the Wnt-signalling contains more genes ...
+# but the others fewer genes ... strange ...
+# If finding better gene lists
+# 
 
 
 
@@ -849,72 +833,72 @@ go_df <- read.delim(gzfile(fpath), comment.char="!", header=FALSE, sep="\t", quo
 
 go_df$V3[as.character(go_df$V5) == go_ids["kidney morphogenesis"]]
 
-
-> go_df$V3[as.character(go_df$V5) == go_ids["kidney morphogenesis"]]
- [1] Agtr2    Ahr      Gcnt1    Gcnt3    Gcnt4    Hnf1b    Nphp3    Nphp3   
- [9] Prkx     Sox4     Tshz3    Vangl2   Wnt4     Wnt9b    Wwtr1    Zmpste24
-24836 Levels: 0610005C13Rik 0610006L08Rik 0610009B22Rik ... Zzz3
-> go_df$V3[as.character(go_df$V5) == go_ids["metanephros development"]]
- [1] Aph1a  Aph1c  Bcl2   Bcl2   Bmp4   Bmp4   Eya1   Eya1   Fbn1   Foxc2 
-[11] Gdf11  Gdnf   Gdnf   Gdnf   Gdnf   Gli3   Greb1l Hoxa11 Hoxc11 Hoxd11
-[21] Id2    Itga8  Itga8  Nf1    Osr1   Pax2   Pax2   Pax8   Pds5a  Rdh10 
-[31] Robo2  Shh    Six2   Slc5a1 Slit2  Spry1  Wnt4   Wnt4   Wt1    Wt1   
-[41] Wt1    Id3    Lhx1   Irx2   Irx3   Irx1   Nkx3-1 Pax8   Tshz3  Osr2  
-24836 Levels: 0610005C13Rik 0610006L08Rik 0610009B22Rik ... Zzz3
-> go_df$V3[as.character(go_df$V5) == go_ids["Wnt signaling pathway"]]
-  [1] 2210016L21Rik Aes           Amer1         Amer2         Amer3        
-  [6] Amotl1        Amotl2        Apc           Apc           Apcdd1       
- [11] Arl6          Axin1         Axin1         Axin2         Bcl7b        
- [16] Bcl9          Brd7          Btrc          Calcoco1      Ccar2        
- [21] Ccdc88c       Ccdc88c       Ccnd1         Ccne1         Ccny         
- [26] Cd44          Cdc73         Cdk14         Cela1         Celsr2       
- [31] Chd8          Cpe           Cpz           Csnk1d        Csnk1e       
- [36] Csnk1g1       Csnk1g2       Csnk1g3       Csnk2a2       Csnk2b       
- [41] Ctnnb1        Ctnnbip1      Ctr9          Cul3          Cxxc4        
- [46] Cyld          Daam1         Daam2         Dab2          Dact1        
- [51] Dact3         Ddb1          Ddit3         Ddx3x         Disc1        
- [56] Dixdc1        Dixdc1        Dkk1          Dkk2          Dkk3         
- [61] Dkk4          Draxin        Draxin        Drd2          Dvl1         
- [66] Dvl2          Dvl2          Dvl3          Dvl3          Etv2         
- [71] Fam53b        Fbxw11        Fbxw4         Fermt2        Frat1        
- [76] Frat2         Frat2         Frat2         Frzb          Fzd1         
- [81] Fzd10         Fzd2          Fzd2          Fzd3          Fzd3         
- [86] Fzd4          Fzd4          Fzd4          Fzd5          Fzd6         
- [91] Fzd6          Fzd7          Fzd7          Fzd8          Fzd8         
- [96] Fzd9          Gid8          Grk5          Grk6          Gsk3a        
-[101] Gsk3b         Hbp1          Hhex          Hic1          Invs         
-[106] Klhl12        Kremen1       Kremen1       Kremen2       Kremen2      
-[111] Krt6a         Ldb1          Lef1          Lef1          Leo1         
-[116] Lgr4          Lgr6          Lrp4          Lrp5          Lrp6         
-[121] Lrrfip2       Lzts2         Macf1         Macf1         Mark1        
-[126] Mark2         Mesd          Mir106b       Mir15a        Mir182       
-[131] Mir195a       Mir196a-1     Mir196a-2     Mir200a       Mir200b      
-[136] Mir20a        Mir221        Mir222        Mir224        Mir27b       
-[141] Mir29b-1      Mir32         Mir93         Mitf          Myc          
-[146] Ndp           Ndrg2         Nkd1          Nkd2          Nlk          
-[151] Notum         Nphp3         Nxn           Otulin        Paf1         
-[156] Peg12         Pias4         Pitx2         Porcn         Porcn        
-[161] Prkaa1        Prkaa2        Ptk7          Ptk7          Pygo1        
-[166] Rnf138        Rnf146        Rnf146        Rnf43         Ror1         
-[171] Ror2          Rspo1         Rspo2         Rspo3         Rspo4        
-[176] Rtf1          Ryk           Ryk           Senp2         Sfrp1        
-[181] Sfrp2         Sfrp4         Sfrp5         Shisa6        Slc9a3r1     
-[186] Sost          Sostdc1       Sox17         Spin1         Strn         
-[191] Tax1bp3       Tcf7          Tcf7          Tcf7l1        Tcf7l1       
-[196] Tcf7l2        Tcf7l2        Tgfb1i1       Tle1          Tle2         
-[201] Tle3          Tle4          Tmem131l      Tmem198       Tmem88       
-[206] Tnik          Tnks          Tnks          Tnks2         Trabd2b      
-[211] Usp34         Vax2          Wdr61         Wif1          Wisp1        
-[216] Wls           Wnt1          Wnt10b        Wnt2          Wnt3a        
-[221] Wnt5a         Wnt5a         Wnt5a         Wnt6          Wnt6         
-[226] Wnt7a         Wnt7b         Wnt9b         Wwox          Xiap         
-[231] Zbed3         Zbtb33        Znrf3         Zranb1        Wnt2b        
-[236] Wnt5b         Axl           Mst1r         Ryk           Wnt3a        
-[241] Wnt3          Csnk1a1       Wnt8a         Mertk         Wnt9a        
-[246] Wnt6          Wnt7b         Wnt2          Wnt7a         Wnt8b        
-[251] Wnt9b         Tyro3         Wnt4          Wnt16         Met          
-[256] Wnt1          Wnt5a         Wnt10a        Wnt10b        Wnt11        
-24836 Levels: 0610005C13Rik 0610006L08Rik 0610009B22Rik ... Zzz3
+# > go_df$V3[as.character(go_df$V5) == go_ids["kidney morphogenesis"]]
+#  [1] Agtr2    Ahr      Gcnt1    Gcnt3    Gcnt4    Hnf1b    Nphp3    Nphp3   
+#  [9] Prkx     Sox4     Tshz3    Vangl2   Wnt4     Wnt9b    Wwtr1    Zmpste24
+# 24836 Levels: 0610005C13Rik 0610006L08Rik 0610009B22Rik ... Zzz3
+# > go_df$V3[as.character(go_df$V5) == go_ids["metanephros development"]]
+#  [1] Aph1a  Aph1c  Bcl2   Bcl2   Bmp4   Bmp4   Eya1   Eya1   Fbn1   Foxc2 
+# [11] Gdf11  Gdnf   Gdnf   Gdnf   Gdnf   Gli3   Greb1l Hoxa11 Hoxc11 Hoxd11
+# [21] Id2    Itga8  Itga8  Nf1    Osr1   Pax2   Pax2   Pax8   Pds5a  Rdh10 
+# [31] Robo2  Shh    Six2   Slc5a1 Slit2  Spry1  Wnt4   Wnt4   Wt1    Wt1   
+# [41] Wt1    Id3    Lhx1   Irx2   Irx3   Irx1   Nkx3-1 Pax8   Tshz3  Osr2  
+# 24836 Levels: 0610005C13Rik 0610006L08Rik 0610009B22Rik ... Zzz3
+# > go_df$V3[as.character(go_df$V5) == go_ids["Wnt signaling pathway"]]
+#   [1] 2210016L21Rik Aes           Amer1         Amer2         Amer3        
+#   [6] Amotl1        Amotl2        Apc           Apc           Apcdd1       
+#  [11] Arl6          Axin1         Axin1         Axin2         Bcl7b        
+#  [16] Bcl9          Brd7          Btrc          Calcoco1      Ccar2        
+#  [21] Ccdc88c       Ccdc88c       Ccnd1         Ccne1         Ccny         
+#  [26] Cd44          Cdc73         Cdk14         Cela1         Celsr2       
+#  [31] Chd8          Cpe           Cpz           Csnk1d        Csnk1e       
+#  [36] Csnk1g1       Csnk1g2       Csnk1g3       Csnk2a2       Csnk2b       
+#  [41] Ctnnb1        Ctnnbip1      Ctr9          Cul3          Cxxc4        
+#  [46] Cyld          Daam1         Daam2         Dab2          Dact1        
+#  [51] Dact3         Ddb1          Ddit3         Ddx3x         Disc1        
+#  [56] Dixdc1        Dixdc1        Dkk1          Dkk2          Dkk3         
+#  [61] Dkk4          Draxin        Draxin        Drd2          Dvl1         
+#  [66] Dvl2          Dvl2          Dvl3          Dvl3          Etv2         
+#  [71] Fam53b        Fbxw11        Fbxw4         Fermt2        Frat1        
+#  [76] Frat2         Frat2         Frat2         Frzb          Fzd1         
+#  [81] Fzd10         Fzd2          Fzd2          Fzd3          Fzd3         
+#  [86] Fzd4          Fzd4          Fzd4          Fzd5          Fzd6         
+#  [91] Fzd6          Fzd7          Fzd7          Fzd8          Fzd8         
+#  [96] Fzd9          Gid8          Grk5          Grk6          Gsk3a        
+# [101] Gsk3b         Hbp1          Hhex          Hic1          Invs         
+# [106] Klhl12        Kremen1       Kremen1       Kremen2       Kremen2      
+# [111] Krt6a         Ldb1          Lef1          Lef1          Leo1         
+# [116] Lgr4          Lgr6          Lrp4          Lrp5          Lrp6         
+# [121] Lrrfip2       Lzts2         Macf1         Macf1         Mark1        
+# [126] Mark2         Mesd          Mir106b       Mir15a        Mir182       
+# [131] Mir195a       Mir196a-1     Mir196a-2     Mir200a       Mir200b      
+# [136] Mir20a        Mir221        Mir222        Mir224        Mir27b       
+# [141] Mir29b-1      Mir32         Mir93         Mitf          Myc          
+# [146] Ndp           Ndrg2         Nkd1          Nkd2          Nlk          
+# [151] Notum         Nphp3         Nxn           Otulin        Paf1         
+# [156] Peg12         Pias4         Pitx2         Porcn         Porcn        
+# [161] Prkaa1        Prkaa2        Ptk7          Ptk7          Pygo1        
+# [166] Rnf138        Rnf146        Rnf146        Rnf43         Ror1         
+# [171] Ror2          Rspo1         Rspo2         Rspo3         Rspo4        
+# [176] Rtf1          Ryk           Ryk           Senp2         Sfrp1        
+# [181] Sfrp2         Sfrp4         Sfrp5         Shisa6        Slc9a3r1     
+# [186] Sost          Sostdc1       Sox17         Spin1         Strn         
+# [191] Tax1bp3       Tcf7          Tcf7          Tcf7l1        Tcf7l1       
+# [196] Tcf7l2        Tcf7l2        Tgfb1i1       Tle1          Tle2         
+# [201] Tle3          Tle4          Tmem131l      Tmem198       Tmem88       
+# [206] Tnik          Tnks          Tnks          Tnks2         Trabd2b      
+# [211] Usp34         Vax2          Wdr61         Wif1          Wisp1        
+# [216] Wls           Wnt1          Wnt10b        Wnt2          Wnt3a        
+# [221] Wnt5a         Wnt5a         Wnt5a         Wnt6          Wnt6         
+# [226] Wnt7a         Wnt7b         Wnt9b         Wwox          Xiap         
+# [231] Zbed3         Zbtb33        Znrf3         Zranb1        Wnt2b        
+# [236] Wnt5b         Axl           Mst1r         Ryk           Wnt3a        
+# [241] Wnt3          Csnk1a1       Wnt8a         Mertk         Wnt9a        
+# [246] Wnt6          Wnt7b         Wnt2          Wnt7a         Wnt8b        
+# [251] Wnt9b         Tyro3         Wnt4          Wnt16         Met          
+# [256] Wnt1          Wnt5a         Wnt10a        Wnt10b        Wnt11        
+# 24836 Levels: 0610005C13Rik 0610006L08Rik 0610009B22Rik ... Zzz3
+# 
 
 
 
@@ -957,49 +941,6 @@ Vielleicht alle diese Gene aufsammeln und dann ein heatmap generieren!
 
 
 
-
-
-################################################################################
-
-Hi Josephus,
-
-
-hier nochmal das directory für die RNA seq Daten für die heatmap:
-
-
-RNAseq_201907_analysis, 
-
-      foxd2-F7-mk4-201907, 
-
-          f7-vs-wt
-
-
-wäre es möglich 3 verschiedene maps zu machen? alles aus  f7-vs-wt? 
-
-
-im skype call haben wir besprochen, dass wir gerne eine oder  heatmap auf GO terms basierend ins Papier machen würden und eine die aus Genen besteht die wir aus anderen verschiedenen gründen relevant für den Phänotyp halten. GO term Listen wären 2 gut, eine der terms die am prominentesten runter ist und einer hoch:
-
-
-    Go term heatmap: aus der Liste der GO terms in f7-vs-wt folder wäre GO:0001822 (kidney development) gut. Das sind diese Gene:Mmp17/Smad9/Fgf1/Col4a4/Tfap2a/Sim1/Wnt2b/Adamts1/Tgfb2/Aqp1/Cys1/Pax2/Npnt/Egr1/Agt/Lrp4/Col4a3/Wnt4/Fgfr2/Id3/Fras1/Gli2/Pygo1/Enpep
-
-
-
-2. aus der Liste der GO terms in f7-vs-wt folder GO:0001822 (regulation of MAPK)
-Gene sind Sash1/Hgf/Samd5/Flt1/Ephb2/Tgfa/Il1rn/Fgfr1/Dusp9/Dusp4/Sfrp1/Ghr/Ghrl/Cd74/Fgd4/Fzd8/Wnt7b/Pdgfrb/Spred2/Mif/Vegfa/Uchl1/Tiam1/Pdgfb/Ptpn6
-
-3. Genliste nicht GO term basiert sonderen aus Interesse für die Gene:
-PAX2, PAX8, wnt6, wnt4, wnt7a, wnt7b, Fras1, Sall1, EYA1 Rab26b, FOXD1, ETV4, ETV5, LAMA5, LRP2, FGFR2, FAT2, RET, MYCN, GFRA1, ITGB3, MAP3K9, MAP3K5, MAPK10,  MAPT, GDNF
-
-als Kontrollgene kann man 
-für hetamap 1 schauen ob die gene in f7 niedriger sind als für wt. 
-für heatmap 2 sollte alles für f7 höher sein als für wt. 
-für heatmap 3 sollten Pax2 und wnt4 in f7 niedriger sein als für wt. 
-
-die Gene aus heatmap 
-
-das wäre total super, danke! 
-
-wenn Du Fragen hast welche Daten ruf mich an, am besten am handy, ich bin meist nicht im Büro. 
 
 
 
@@ -1289,10 +1230,10 @@ capitalize <- Vectorize(function(s) paste0(toupper(substring(s, 1, 1)), tolower(
 goi <- capitalize(c("PAX2", "PAX8", "wnt6", "wnt4", "wnt7a", "wnt7b", "Fras1", "Sall1", "EYA1", "Rab26", "Rab26os", "FOXD1", "ETV4", "ETV5", "LAMA5", "LRP2", "FGFR2", "FAT2", "RET", "MYCN", "GFRA1", "ITGB3", "MAP3K9", "MAP3K5", "MAPK10", "MAPT", "GDNF"))
 # goi: gene of interest
 
-Jede Gengruppe wurde 3x geplotet: 
-_scaled_        zentriert um den Mittelwert und std dev als 1 gesetzt
-_unscaled_      Rohwerte
-_unscaledlog2_  log2 der Rohwerte um Unterschiede auch im kleinen Bereich besser zu sehen
+## Jede Gengruppe wurde 3x geplottet: 
+## _scaled_        zentriert um den Mittelwert und std dev als 1 gesetzt
+## _unscaled_      Rohwerte
+## _unscaledlog2_  log2 der Rohwerte um Unterschiede auch im kleinen Bereich besser zu sehen
 
 
 
