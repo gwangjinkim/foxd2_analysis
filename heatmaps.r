@@ -1,25 +1,4 @@
 
-conda create --name xlsxgrep
-source activate xlsxgrep
-conda install -c conda-forge python
-pip install xlsxgrep
-
-cd /media/josephus/Elements/DEanalysis
-source activate xlsxgrep
-xlsxgrep "kidney morphogenesis" --recursive --with-filename --with-sheetname .
-
-
-for f in foxd2*;
-  do xlsxgrep "kidney morphogenesis" --recursive --with-filename --with-sheetname ${f}
-done
-
-# hit!
-
-
-
-
-
-
 cmputer <- "work"
 
 if (computer == "ss") {
@@ -34,37 +13,6 @@ if (computer == "ss") {
 dir.create(out_dir, recursive=TRUE)
 
 source(file.path(script_dir, "190122.rdownstream.central.R"))
-
-
-
-
-
-
-# foxd2-C3-F7-201907/c3-vs-f7/GO/DE_sig_foxd2-C3-F7_c3-vs-f7_190801160815_0.05_1_over_GO_BP.xlsx: down.l2FC.srt: 	GO:0001656	metanephros development	23/1882	87/23239	2.73636731704451e-07	4.15678999185964e-05	3.25926598261359e-05	Wnt4/Aph1a/Gdnf/Gata3/Rdh10/Lif/Sox8/Pdgfa/Kif26b/Eya1/Aqp1/Fras1/Pdgfb/Lhx1/Pou3f3/Hnf1b/Pax8/Pax2/Irx2/Wnt7b/Tfap2a/Sall1/Irx1	23.0
-
-
-# foxd2-C3-F7-201907/c3-vs-f7/GO/DE_sig_foxd2-C3-F7_c3-vs-f7_190801160815_0.05_1_over_GO_BP.xlsx: down.l2FC.srt: 	GO:0016055	Wnt signaling pathway	65/1882	418/23239	2.65747153339829e-07	4.15678999185964e-05	3.25926598261359e-05	Gsk3a/Arntl/Mdfic/Sulf2/Gid8/Porcn/Notch1/Stk4/Aes/Wnt4/Trpm4/Rac1/Nfkb1/Wls/Nphp4/Src/Dkk3/Gata3/Xiap/Kdm6a/Atp6ap2/Ccnd1/Zfp703/Bicc1/Jade1/Wnt5a/Wnt9a/Prkaa2/Dvl1/Zbtb33/Vangl2/Fam53b/Egfr/Ccne1/Nrarp/Ror1/Gprc5b/Fzd4/Pitx2/Fzd6/Met/Daam2/Axin2/Lgr6/Prickle1/Sema5a/Wnt5b/Mgat3/Wnt10a/Scel/Nkx2-5/Folr1/Cdh1/Cav1/Sfrp1/Mir196a-1/Hnf1b/Ptpru/Nog/Celsr1/Wnt6/Ccdc88c/Wnt7b/Celsr2/Sall1	65.0
-
-
-# read-in the GO table
-
-# for a givn GO term slurp the genes
-
-# read-in the sig-DE table
-
-# select the genes
-
-# build a heatmap - first without scaling - just absolute
-
-# then with scaling and centering
-
-
-
-
-
-
-
-
 
 ###########################################
 # which files I are dealing with?
@@ -135,16 +83,9 @@ show_go_terms(right_go_dfs[[3]])
 kidney.dev <- get_go_genes(right_go_dfs[[3]], "kidney development")
 
 
-# how about generating for each GO term a heatmap? that is absolutely possible!
-
-
 ###############################################
 # generate for the genes a heatmap
 ###############################################
-
-
-
-
 
 ###############################################
 # helper functions
@@ -317,10 +258,6 @@ generate_heatmap(df[kidney.morphogenesis, ],
                  non_scale_log2=TRUE,
                  display_numbers = TRUE)
 
-
-
-
-
 generate_heatmap(df[kidney.dev, ], 
                  col_names=NULL, 
                  scale=FALSE, 
@@ -364,10 +301,6 @@ generate_heatmap(df[kidney.dev, ],
                  non_scale_log2=TRUE,
                  display_numbers = TRUE) # most unrealistic black and white picture
 
-
-
-
-
 generate_heatmap(df[wnt.sig.pathway, ], 
                  col_names=c(rep("F7", 5), rep("wt", 5)), 
                  scale=FALSE, 
@@ -375,18 +308,6 @@ generate_heatmap(df[wnt.sig.pathway, ],
                  non_scale_log2=FALSE,
                  display_numbers = TRUE,
                  fontsize_number = 3) 
-                 
-# save all these variants for 
-#  each genes/go terms
-#  for each combination
-#  in different folders
-#  in svg and eps and jpg format
-# and send them out!
-# 
-# if gene name length > 65 then go to 3
-
-
-
 
 
 
@@ -405,8 +326,6 @@ genes <- get_go_genes(other_go_dfs[[3]], go_term)
 size <- if (length(genes) <= 65) 5 else 3
 
 mode <- "scaled_f7_vs_wt"
-# 'DE_sig_foxd2-C3-F7_c3-vs-f7_190801160815_0.05_1_over_GO_BP.xlsx'
-# '/media/josephus/Elements/DEanalysis/foxd2-F7-mk4-201907/f7-vs-wt/count-table/nrm-counts-foxd2-mk4-f7-vs-wt.xlsx'
 
 symbol2string <- function(x) deparse(substitute(x))
 symbol2fstring <- function(x) gsub("\\.|\\$", "_", deparse(substitute(x)))
@@ -484,8 +403,6 @@ plot_go_term_heatmap_with_numbers("Wnt signaling pathway", df, out_dir, go_df)
 out_dir = "/media/josephus/Elements/DEanalysis/tmp"
 unlink(out_dir, recursive=TRUE)
 
-
-
 df <- right_counts_df
 go_df <- right_go_dfs[[3]] # downregulated
 out_dir = "/media/josephus/Elements/DEanalysis/heatmap_foxd2-F7-mk4-201907/f7-vs-wt/heatmaps_from_foxd2-mk4_f7-vs-wt_GO_BP_down"
@@ -494,10 +411,6 @@ go_terms <- show_go_terms(go_df)
 for (go_term in go_terms) {
   plot_go_term_heatmap_with_numbers(go_term, df, out_dir, go_df)
 }
-
-
-# rsync -rav -e "ssh -p 64168" josephus@132.230.165.168:/media/josephus/Elements/DEanalysis/heatmap_foxd2-F7-mk4-201907 ~/Downloads/DEanalysis/
-
 
 df <- right_counts_df
 go_df <- right_go_dfs[[2]] # upregulated
@@ -509,12 +422,7 @@ for (go_term in go_terms) {
 }
 
 
-
-
-
 ################################################################################
-
-
 
 ###########################################
 # retrive all genes associated to a GO term
@@ -541,33 +449,7 @@ go_ids_more <- sapply(go_terms, function(gt) get_go_id(other_go_dfs[[3]], gt, ex
 go_terms_found <- sapply(go_terms, function(gt) get_go_term(other_go_dfs[[3]], gt))
 
 
-
-
 require(biormaRt)
-
-# go_id2genes_initialize <- function() {
-#    ensembl <- NULL
-#    df <- NULL
-#    function(go_id) {
-#      if (is.null(ensembl)) ensembl <<- useMart("ensembl", dataset = "mmusculus_gene_ensembl")
-#      if (is.null(df)) df <<- getBM(attributes = c('external_gene_name', 'go_id'),
-#                       mart = ensembl)
-#      df$external_gene_name[df$go_id == go_id]
-#    }
-# }
-# 
-# go_id2genes <- go_id2genes_initialize()
-# go_id2genes(go_ids[[1]])
-# # Error in listMarts(host = host, path = path, port = port, includeHosts = TRUE,  : 
-# #   Unexpected format to the list of available marts.
-# # Please check the following URL manually, and try ?listMarts for advice.
-# # http://www.ensembl.org:80/biomart/martservice?type=registry&requestid=biomaRt
-# # 
-# 
-# 
-# # ensembl <- useMart("ensembl", dataset = "mmusculus_gene_ensembl")
-# # listAttributes(ensembl)
-# 
 
 ensembl <- useMart("ensembl", dataset = "mmusculus_gene_ensembl")
 df <- getBM(attributes = c('external_gene_name', 'go_id'),
@@ -587,9 +469,6 @@ right_go_analysis_fpath <- '/home/josephus/Downloads/DEanalysis/foxd2-foxd2-F7-2
 ###############################################
 # generate for the genes a heatmap
 ###############################################
-
-
-
 
 
 ###############################################
@@ -740,9 +619,6 @@ out_dir = "/media/josephus/Elements/DEanalysis/heatmap_foxd2-foxd2-F7-20200416/f
 plot_go_term_heatmap_with_numbers("kidney morphogenesis", right_counts_df, out_dir, genes=kidney.morphogenesis)
 plot_go_term_heatmap_with_numbers("metanephros development", right_counts_df, out_dir, genes=metanephros.development)
 plot_go_term_heatmap_with_numbers("Wnt signaling pathway", right_counts_df, out_dir, genes=wnt.signalling.pathway)
-
-# rsync -rav -e "ssh -p 64168" josephus@132.230.165.168:/media/josephus/Elements/DEanalysis/heatmap_foxd2-foxd2-F7-20200403 ~/Downloads/DEanalysis/
-# rsync -rav -e "ssh -p 64168" josephus@132.230.165.168:/media/josephus/Elements/DEanalysis/heatmap_foxd2-foxd2-F7-20200416 ~/Downloads/DEanalysis/
 
 ##################################
 # with biomaRt
@@ -915,34 +791,6 @@ go_bps = list( "kidney morphogenesis" = kidney.morphogenesis,
 fused_genes <- Map(function(...) unique(unlist(...)), go_tables, genes, go_bps)
 
 save.image(file="~/foxd2.analysis.20200403.rdata")
-####################################
-# todo:
-####################################
-
-Vielleicht alle diese Gene aufsammeln und dann ein heatmap generieren!
-
-
-
-# kill 5181
-# kill 31868
-# kill 3987
-# 
-#  8051
-#  
-# 4273
-# 10191
-# 4965
-# 19202
-# kill 4390
-# kill 6251
-
-
-
-
-
-
-
-
 
 
 ################################################################################
@@ -960,13 +808,6 @@ regulation.of.mapk <- c("Sash1", "Hgf", "Samd5", "Flt1", "Ephb2", "Tgfa", "Il1rn
 
 capitalize <- Vectorize(function(s) paste0(toupper(substring(s, 1, 1)), tolower(substring(s, 2))))
 goi <- capitalize(c("PAX2", "PAX8", "wnt6", "wnt4", "wnt7a", "wnt7b", "Fras1", "Sall1", "EYA1", "Rab26", "Rab26os", "FOXD1", "ETV4", "ETV5", "LAMA5", "LRP2", "FGFR2", "FAT2", "RET", "MYCN", "GFRA1", "ITGB3", "MAP3K9", "MAP3K5", "MAPK10", "MAPT", "GDNF"))
-# test if goi names are all present in list
-
-# there is no Rab26b only Rab26 or Rab26os!
-
-###############################################
-# generate for the genes a heatmap
-###############################################
 
 ###############################################
 # helper functions
@@ -1220,8 +1061,6 @@ F7_mk4_3	/media/josephus/archive_big/count/foxd2_201907p/external-MN-18-mK4-F7-r
 F7_mk4_4	/media/josephus/archive_big/count/foxd2_201907p/external-MN-19-mK4-F7-rep4-16870-sym-fcount.tab	f7	num
 F7_mk4_5	/media/josephus/archive_big/count/foxd2_201907p/external-MN-20-mK4-F7-rep5-16869-sym-fcount.tab	f7	num
 
-Es wurden die Gene geplottet:
-
 kidney.development <- c("Mmp17", "Smad9", "Fgf1", "Col4a4", "Tfap2a", "Sim1", "Wnt2b", "Adamts1", "Tgfb2", "Aqp1", "Cys1", "Pax2", "Npnt", "Egr1", "Agt", "Lrp4", "Col4a3", "Wnt4", "Fgfr2", "Id3", "Fras1", "Gli2", "Pygo1", "Enpep")
 
 regulation.of.mapk <- c("Sash1", "Hgf", "Samd5", "Flt1", "Ephb2", "Tgfa", "Il1rn", "Fgfr1", "Dusp9", "Dusp4", "Sfrp1", "Ghr", "Ghrl", "Cd74", "Fgd4", "Fzd8", "Wnt7b", "Pdgfrb", "Spred2", "Mif", "Vegfa", "Uchl1", "Tiam1", "Pdgfb", "Ptpn6")
@@ -1229,15 +1068,6 @@ regulation.of.mapk <- c("Sash1", "Hgf", "Samd5", "Flt1", "Ephb2", "Tgfa", "Il1rn
 capitalize <- Vectorize(function(s) paste0(toupper(substring(s, 1, 1)), tolower(substring(s, 2))))
 goi <- capitalize(c("PAX2", "PAX8", "wnt6", "wnt4", "wnt7a", "wnt7b", "Fras1", "Sall1", "EYA1", "Rab26", "Rab26os", "FOXD1", "ETV4", "ETV5", "LAMA5", "LRP2", "FGFR2", "FAT2", "RET", "MYCN", "GFRA1", "ITGB3", "MAP3K9", "MAP3K5", "MAPK10", "MAPT", "GDNF"))
 # goi: gene of interest
-
-## Jede Gengruppe wurde 3x geplottet: 
-## _scaled_        zentriert um den Mittelwert und std dev als 1 gesetzt
-## _unscaled_      Rohwerte
-## _unscaledlog2_  log2 der Rohwerte um Unterschiede auch im kleinen Bereich besser zu sehen
-
-
-
-
 
 
 
